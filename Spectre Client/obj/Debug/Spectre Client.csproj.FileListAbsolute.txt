@@ -1,0 +1,10 @@
+C:\Users\Josh\Desktop\Spectre Client\Spectre Client\bin\Debug\Spectre Client.exe.config
+C:\Users\Josh\Desktop\Spectre Client\Spectre Client\bin\Debug\Spectre Client.exe
+C:\Users\Josh\Desktop\Spectre Client\Spectre Client\bin\Debug\Spectre Client.pdb
+C:\Users\Josh\Desktop\Spectre Client\Spectre Client\obj\Debug\Spectre Client.csprojAssemblyReference.cache
+C:\Users\Josh\Desktop\Spectre Client\Spectre Client\obj\Debug\Spectre_Client.Properties.Resources.resources
+C:\Users\Josh\Desktop\Spectre Client\Spectre Client\obj\Debug\Spectre Client.csproj.GenerateResource.cache
+C:\Users\Josh\Desktop\Spectre Client\Spectre Client\obj\Debug\Spectre Client.csproj.CoreCompileInputs.cache
+C:\Users\Josh\Desktop\Spectre Client\Spectre Client\obj\Debug\Spectre Client.exe
+C:\Users\Josh\Desktop\Spectre Client\Spectre Client\obj\Debug\Spectre Client.pdb
+C:\Users\Josh\Desktop\Spectre Client\Spectre Client\obj\Debug\Spectre_Client.Main.resources
