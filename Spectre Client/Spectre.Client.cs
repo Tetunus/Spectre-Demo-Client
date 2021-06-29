@@ -1,9 +1,19 @@
-﻿using System;
+﻿/////////////////////////////////////////////////////////////////////
+//                                                                 //
+//  File: Spectre.Client.cs                                        //
+//  Author: Tetunus (Josh)                                         //
+//  Description: An example connection to the Spectre server       //
+//               made in the C# programming language               //
+//                                                                 //
+/////////////////////////////////////////////////////////////////////
+
+using System;
 using System.IO;
 using System.Net;
-using System.Net.Sockets;
 using System.Text;
+using System.Net.Sockets;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 
 namespace Spectre
 {
@@ -23,14 +33,20 @@ namespace Spectre
 
             return "127.0.0.1"; // should never happen.
         }
+
+        public static string Encrypt(string data)
+        {
+            return Convert.ToBase64String(Encoding.UTF8.GetBytes(data));
+        }
     }
 
     class Client
     {
         public static string IP = "";
-        public static int Port = 8888;
-        public static bool IsConnected = false;
+        public static int Port = 8888; // Default value.
+        public static bool IsEncrypted = false; // Default value.
 
+        private static bool _is_connected = false;
         private static TcpClient _client;
         private static NetworkStream _stream;
 
@@ -43,7 +59,7 @@ namespace Spectre
                     _client = new TcpClient(IP, Port);
                     _stream = _client.GetStream();
 
-                    IsConnected = true;
+                    _is_connected = true;
 
                     return true;
                 }
@@ -74,7 +90,7 @@ namespace Spectre
             {
                 IP = "";
                 Port = 8888;
-                IsConnected = false;
+                _is_connected = false;
 
                 _client.Close();
                 _stream.Close();
@@ -85,12 +101,22 @@ namespace Spectre
             }
         }
 
+        public static bool IsConnected()
+        {
+            return _is_connected;
+        }
+
         public static void Send(string message)
         {
             try
             {
-                if (IsConnected)
+                if (_is_connected)
                 {
+                    if (IsEncrypted)
+                    {
+                        message = Util.Encrypt(message);
+                    }
+
                     byte[] data = Encoding.ASCII.GetBytes(message);
                     _stream.Write(data, 0, data.Length);
                 }
@@ -102,6 +128,11 @@ namespace Spectre
 
                 if (Connect())
                 {
+                    if (IsEncrypted)
+                    {
+                        message = Util.Encrypt(message);
+                    }
+
                     byte[] data = Encoding.ASCII.GetBytes(message);
 
                     _stream.Write(data, 0, data.Length);
@@ -118,6 +149,11 @@ namespace Spectre
 
                 if (Connect())
                 {
+                    if (IsEncrypted)
+                    {
+                        message = Util.Encrypt(message);
+                    }
+
                     byte[] data = Encoding.ASCII.GetBytes(message);
 
                     _stream.Write(data, 0, data.Length);

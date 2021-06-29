@@ -10,6 +10,7 @@ namespace Spectre_Client
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
             Application.Run(new Main());
         }
     }
