@@ -23,7 +23,7 @@ namespace Spectre_Client
 
         private void Main_Load(object sender, EventArgs e)
         {
-            Client.IsEncrypted = true;
+            Client.IsEncrypted = false;
 
             serverIPTextBox.Text = Util.GetLocalIP();
         }
